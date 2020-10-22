@@ -64,11 +64,11 @@ public class GameManager : MonoBehaviour
 
     public void Won()
     {
-
+        GetComponentInParent<CanvasManager>().FinalText("You won");
     }
     public void Lost()
     {
-
+        GetComponentInParent<CanvasManager>().FinalText("You lost");
     }
 
     public void RestartGame()

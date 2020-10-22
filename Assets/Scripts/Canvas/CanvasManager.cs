@@ -16,6 +16,7 @@ public class CanvasManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalCurrencies_UI;
     [SerializeField] TextMeshProUGUI timer_UI;
     [SerializeField] TextMeshProUGUI gameOverCurrencies_UI;
+    public TextMeshProUGUI winOrLost_UI;
 
     void Start()
     {
@@ -30,15 +31,15 @@ public class CanvasManager : MonoBehaviour
 
     void UpdateHealthUI()
     {
-        shipHealth_UI.text = ship.GetComponent<ShipController>().allStatus[ship.GetComponent<ShipController>().healthLevel - 1].health.ToString();
+        shipHealth_UI.text = ship.GetComponent<ShipController>().allStatus[ship.GetComponent<ShipController>().healthLevel - 1].health.ToString() + " HP";
     }
     void UpdateCurrenciesUI()
     {
-        totalCurrencies_UI.text = CurrencyManager.Instance.inGameCurrencies.ToString();
+        totalCurrencies_UI.text     = CurrencyManager.Instance.inGameCurrencies.ToString() + " $";
     }
     void UpdateTimerUI()
     {
-        timer_UI.text = GameManager.Instance.time.ToString("#");
+        timer_UI.text = "Timer: " + GameManager.Instance.time.ToString("#");
     }
     public void UpdateFinalScreenCurrencies()
     {
@@ -51,6 +52,10 @@ public class CanvasManager : MonoBehaviour
     public void ShrinkGameOverPanel()
     {
         gameOverPanel.transform.localScale = Vector3.zero;
+    }
+    public void FinalText(string text)
+    {
+        winOrLost_UI.text = text;
     }
 
 
